@@ -1,0 +1,14 @@
+---
+interface Props {
+	class: string
+}
+
+import NavbarElement from "./NavbarElement.astro"
+---
+
+<nav>
+	<ul class="flex space-x-4">
+		<NavbarElement to="/docs" name="Docs" />
+		<NavbarElement to="/discord" name="Discord" />
+	</ul>
+</nav>

@@ -1,9 +1,12 @@
 ---
+import NavbarMenu from "../components/layout/NavbarMenu.astro"
+import RocketLaunchIcon from "../components/icons/RocketLaunchIcon.astro"
+
 interface Props {
-	title: string;
+	title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <!doctype html>
@@ -17,6 +20,21 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="bg-blue-1000">
-		<slot />
+		<header class="flex text-white p-4 items-center">
+			<a href="/">
+				<img src="/img/vilbot.png" alt="Vilbot" class="w-full max-w-52" />
+			</a>
+			<NavbarMenu class="grow" />
+			<a href="/" class="flex gap-3">
+				<RocketLaunchIcon />
+				Admin Panel
+			</a>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer class="text-white p-4">
+			<p>&copy; {new Date().getFullYear()} My Site</p>
+		</footer>
 	</body>
 </html>
