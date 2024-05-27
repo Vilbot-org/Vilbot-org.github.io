@@ -1,13 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
+		container: {
+			center: true,
+		},
 		extend: {
 			colors: {
-				blue:{
-					1000: '#0E1322'
-				}
-			}
+				blue: {
+					1000: "#0E1322",
+				},
+			},
 		},
 	},
 	plugins: [],
