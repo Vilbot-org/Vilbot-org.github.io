@@ -1,6 +1,9 @@
 ---
-import NavbarMenu from "../components/layout/NavbarMenu.astro"
+import AsideMenuComponent from "../components/AsideMenuComponent.astro"
 import RocketLaunchIcon from "../components/icons/RocketLaunchIcon.astro"
+import MenuComponent from "../components/MenuComponent.astro"
+import ButtonComponent from "../components/utils/ButtonComponent.astro"
+import "../assets/style/base.css"
 
 interface Props {
 	title: string
@@ -19,22 +22,151 @@ const { title } = Astro.props
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
+
 	<body class="bg-blue-1000">
-		<header class="flex text-white p-4 items-center">
-			<a href="/">
-				<img src="/img/vilbot.png" alt="Vilbot" class="w-full max-w-52" />
-			</a>
-			<NavbarMenu class="grow" />
-			<a href="/" class="flex gap-3">
-				<RocketLaunchIcon />
-				Admin Panel
-			</a>
+		<header class="absolute inset-x-0 top-0 z-50">
+			<nav class="container flex items-center justify-between p-6" aria-label="Global">
+				<div class="flex lg:flex-1">
+					<a href="/">
+						<span class="sr-only">Vilbot</span>
+						<img src="/img/vilbot.png" alt="Vilbot" class="w-full max-w-44" />
+					</a>
+				</div>
+				<div class="flex lg:hidden">
+					<button
+						type="button"
+						class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+						onclick="toggleMenu()"
+					>
+						<span class="sr-only">Open main menu</span>
+						<svg
+							class="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+						</svg>
+					</button>
+				</div>
+
+				<div class="hidden lg:flex lg:gap-x-12">
+					<MenuComponent
+						items={[
+							{
+								title: "Commands",
+								url: "#",
+							},
+							{
+								title: "Support",
+								url: "#",
+							},
+						]}
+					/>
+				</div>
+				<div class="hidden lg:flex lg:flex-1 lg:justify-end">
+					<ButtonComponent tag="a" href="#">
+						Dashboard
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="icon icon-tabler icons-tabler-outline icon-tabler-external-link"
+							><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+								d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"></path><path d="M11 13l9 -9"
+							></path><path d="M15 4h5v5"></path></svg
+						>
+					</ButtonComponent>
+				</div>
+				<!-- Mobile menu, show/hide based on menu open state. -->
+				<div id="mobile-menu" class="hidden" role="dialog" aria-modal="true">
+					<div class="fixed inset-0 z-50 bg-black opacity-25"></div>
+					<div
+						class="sm:min-w-sm fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-blue-1000 px-6 py-6 sm:ring-1 sm:ring-gray-900/10"
+					>
+						<div class="flex items-center justify-between">
+							<a href="#" class="-m-1.5 p-1.5">
+								<span class="sr-only">Vilbot</span>
+								<img class="h-8 w-auto" src="/img/v.png" alt="V" />
+							</a>
+							<button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" onclick="toggleMenu()">
+								<span class="sr-only">Close menu</span>
+								<svg
+									class="h-6 w-6"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="1.5"
+									stroke="currentColor"
+									aria-hidden="true"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+								</svg>
+							</button>
+						</div>
+						<div class="flow-root">
+							<AsideMenuComponent
+								items={[
+									{
+										title: "Commands",
+										url: "#",
+									},
+									{
+										title: "Support",
+										url: "#",
+									},
+								]}
+							/>
+						</div>
+					</div>
+				</div>
+
+				<script is:inline>
+					const mobileMenu = document.querySelector("#mobile-menu")
+
+					function toggleMenu() {
+						mobileMenu?.classList.toggle("hidden")
+					}
+				</script>
+			</nav>
+
+			<main class="py-16">
+				<slot />
+			</main>
+			<footer class="container border-t border-t-gray-700 p-6">
+				<section class="flex items-center justify-between">
+					<img src="/img/vilbot.png" alt="Vilbot" class="w-full max-w-44" />
+					<MenuComponent
+						items={[
+							{
+								title: "Contact",
+								url: "#",
+							},
+							{
+								title: "Terms of use",
+								url: "#",
+							},
+							{
+								title: "Privacy Policy",
+								url: "#",
+							},
+						]}
+					/>
+				</section>
+				<section class="mt-4 text-center text-gray-400">
+					<p>&copy; {new Date().getFullYear()} Vilbot</p>
+				</section>
+			</footer>
 		</header>
-		<main>
-			<slot />
-		</main>
-		<footer class="text-white p-4">
-			<p>&copy; {new Date().getFullYear()} My Site</p>
-		</footer>
 	</body>
 </html>

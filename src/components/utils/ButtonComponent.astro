@@ -1,0 +1,26 @@
+---
+import type { HTMLTag } from "astro/types"
+
+const styles = {
+	primary: "bg-blue-600 hover:bg-blue-700 disabled:bg-blue-500",
+	danger: "bg-red-600 hover:bg-red-800 disabled:bg-red-500",
+	secondary: "bg-gray-600 hover:bg-gray-700 disabled:bg-gray-500",
+}
+
+interface Props {
+	tag?: HTMLTag
+	href?: string
+	btnStyle?: keyof typeof styles
+	isLoading?: boolean
+}
+
+const { tag: Element = "button", href, btnStyle: btnStyle = "primary", isLoading } = Astro.props
+---
+
+<Element
+	href={Element === "a" ? href : undefined}
+	class={`flex items-center justify-center gap-2 px-4 py-2 text-sm text-white transition duration-300 ${styles[btnStyle]}`}
+	disabled={isLoading}
+>
+	<slot />
+</Element>

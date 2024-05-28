@@ -1,0 +1,18 @@
+a.underline-animate {
+  position: relative;
+}
+
+a.underline-animate:hover::after {
+  width: 100%;
+}
+
+a.underline-animate::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: gray;
+  transition: width 0.3s;
+}
