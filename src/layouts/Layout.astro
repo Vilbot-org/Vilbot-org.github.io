@@ -1,4 +1,7 @@
 ---
+import Discord from "../icons/Discord.astro";
+import Github from "../icons/Github.astro";
+
 interface Props {
   title: string;
 }
@@ -17,21 +20,34 @@ const year = new Date().getFullYear();
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
-    <body class="min-h-screen flex flex-col">
-      <header class="bg-gray-200 p-4">
-        <div class="flex items-center space-x-4">
-          <h1>Vilbot</h1>
-        </div>
-      </header>
-      <main class="flex-grow bg-gray-100 p-4">
-        <slot />
-      </main>
-      <footer class="bg-gray-200 px-4 py-8 text-center">
+  <body class="min-h-screen flex flex-col">
+    <header class="px-4 py-8">
+      <div class="flex items-center space-x-4">
+        <h1>Vilbot</h1>
+      </div>
+    </header>
+    <main class="flex-grow p-4">
+      <slot />
+    </main>
+    <footer class="px-4 py-8 text-center">
+      <nav
+        class="container mx-auto flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
+      >
         <p class="text-base">
           ©GFrancV - {year}
         </p>
-      </footer>
-    </body>
+
+        <div class="flex items-center gap-4">
+          <a href="#">
+            <span class="sr-only">Discord</span>
+            <Discord class="w-8 h-8" />
+          </a>
+          <a href="#">
+            <span class="sr-only">GitHub</span>
+            <Github class="w-8 h-8" />
+          </a>
+        </div>
+      </nav>
+    </footer>
   </body>
 </html>
