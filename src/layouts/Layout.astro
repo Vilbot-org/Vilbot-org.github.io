@@ -8,6 +8,9 @@ interface Props {
 
 const { title } = Astro.props;
 const year = new Date().getFullYear();
+
+const discordUrl = import.meta.env.PUBLIC_DISCORD_URL;
+const githubRepo = import.meta.env.PUBLIC_GITHUB_REPO;
 ---
 
 <!doctype html>
@@ -20,31 +23,26 @@ const year = new Date().getFullYear();
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen flex flex-col">
-    <header class="px-4 py-8">
-      <div class="flex items-center space-x-4">
-        <h1>Vilbot</h1>
-      </div>
-    </header>
+  <body class="min-h-screen flex flex-col bg-[#0e1323]">
     <main class="flex-grow p-4">
       <slot />
     </main>
-    <footer class="px-4 py-8 text-center">
+    <footer class="px-4 py-8 text-center border-t border-[#858b9833]">
       <nav
         class="container mx-auto flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
       >
-        <p class="text-base">
-          ©GFrancV - {year}
+        <p class="text-base text-white">
+          ©<a href="https://gfrancv.com">GFrancV</a> - {year}
         </p>
 
         <div class="flex items-center gap-4">
-          <a href="#">
+          <a href={discordUrl} class="duration-300 hover:-translate-y-1">
             <span class="sr-only">Discord</span>
-            <Discord class="w-8 h-8" />
+            <Discord class="w-6 h-6 text-white" />
           </a>
-          <a href="#">
+          <a href={githubRepo} class="duration-300 hover:-translate-y-1">
             <span class="sr-only">GitHub</span>
-            <Github class="w-8 h-8" />
+            <Github class="w-6 h-6 text-white" />
           </a>
         </div>
       </nav>
