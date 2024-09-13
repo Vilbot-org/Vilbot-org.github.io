@@ -9,7 +9,7 @@ interface Props {
 const { title } = Astro.props;
 
 const discordUrl = import.meta.env.PUBLIC_DISCORD_URL;
-const githubRepo = import.meta.env.PUBLIC_GITHUB_REPO;
+const githubRepo = import.meta.env.PUBLIC_REPO;
 ---
 
 <!doctype html>
@@ -91,6 +91,4 @@ const githubRepo = import.meta.env.PUBLIC_GITHUB_REPO;
       background-position: 0 100%;
     }
   }
-
-
 </style>
