@@ -3,37 +3,80 @@ import Button from "../components/Button.astro";
 import Layout from "../layouts/Layout.astro";
 
 const inviteBotUrl = import.meta.env.PUBLIC_INVITE_BOT_URL;
+const discordUrl = import.meta.env.PUBLIC_DISCORD_URL;
 ---
 
+<script>
+  const req = await fetch(
+    "https://api.github.com/repos/Vilbot-org/bot/releases/latest"
+  );
+  const { tag_name } = await req.json();
+
+  const releaseTag = document.getElementById("release-tag");
+
+  if (!releaseTag) {
+    throw new Error("Element with id 'release-tag' not found");
+  }
+
+  if (releaseTag && !tag_name) {
+    releaseTag.remove();
+  }
+
+  releaseTag.innerText = tag_name;
+  releaseTag.classList.remove("opacity-0");
+  releaseTag.classList.add("opacity-60");
+</script>
+
 <Layout title="Vilbot - The awesome Discord Music Bot for your server!">
-  <section class="container mx-auto px-4 py-48 text-center m-auto">
-    <h1 class="text-6xl md:text-7xl lg:text-9xl font-bold mb-4 text-[#fe83e8]">
-      Vilbot
-    </h1>
-    <div class="space-y-4 mb-8">
-      <p class="text-gray-300 text-xl inline-block px-4 py-2">
-        The awesome Discord Music Bot for your server!
-      </p>
+  <section class="relative">
+    <div
+      class="absolute -z-10 left-1/2 top-0 ml-[-38rem] h-[25rem] w-[81.25rem] [mask-image:linear-gradient(white,transparent)]"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] from-fuchsia-400/30 to-violet-400/30 opacity-100"
+      >
+      </div>
     </div>
-    <div class="flex justify-center gap-4">
-      <Button as="a" color="fuchsia" href={inviteBotUrl}>
-        Invite Vilbot
-        <svg
-          viewBox="0 0 20 20"
-          fill="none"
-          aria-hidden="true"
-          class="mt-0.5 h-5 w-5 -mr-1 transition-all duration-300 group-hover:translate-x-1"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="m11.5 6.5 3 3.5m0 0-3 3.5m3-3.5h-9"
+    <section class="container mx-auto px-4 py-48 text-center m-auto">
+      <div
+        id="release-tag"
+        class="w-fit text-sm ring-1 ring-fuchsia-400 text-fuchsia-400 py-1 px-2 mx-auto rounded-full opacity-0 mb-2 transition-all duration-300"
+      >
+        v0.0.0
+      </div>
+
+      <h1
+        class="text-6xl md:text-7xl lg:text-9xl font-bold mb-2 text-fuchsia-400 tracking-wider"
+      >
+        VILBOT
+      </h1>
+      <div class="space-y-4 mb-6">
+        <p class="text-gray-300 text-lg inline-block px-4 py-2">
+          The awesome Discord Music Bot for your server!
+        </p>
+      </div>
+      <div class="flex justify-center gap-4">
+        <Button as="a" color="fuchsia" href={inviteBotUrl} target="_blank">
+          Invite Vilbot
+          <svg
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+            class="mt-0.5 h-5 w-5 -mr-1 transition-all duration-300 group-hover:translate-x-1"
           >
-          </path>
-        </svg>
-      </Button>
-      <Button as="a" color="zinc" href="#"> Join to Discord </Button>
-    </div>
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m11.5 6.5 3 3.5m0 0-3 3.5m3-3.5h-9"
+            >
+            </path>
+          </svg>
+        </Button>
+        <Button as="a" color="zinc" href={discordUrl} target="_blank">
+          Join to Discord
+        </Button>
+      </div>
+    </section>
   </section>
 </Layout>
