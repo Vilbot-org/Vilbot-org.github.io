@@ -27,9 +27,30 @@ const githubRepo = import.meta.env.PUBLIC_REPO;
       <nav
         class="border-t border-white/5 px-4 py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
       >
-        <p class="text-base text-zinc-400">
-          Created with ❤️ by <a href="https://gfrancv.com">GFrancV</a>
-        </p>
+        <div>
+          <ul class="flex gap-2 mb-2">
+            <li>
+              <a
+                href="/privacy-policy"
+                class="transition-all duration-300 inline-block text-zinc-400"
+              >
+                Privacy Policy
+              </a>
+            </li>
+            <li class="text-zinc-400">•</li>
+            <li>
+              <a
+                href="/terms-of-service"
+                class="transition-all duration-300 inline-block text-zinc-400"
+              >
+                Terms of Service
+              </a>
+            </li>
+          </ul>
+          <p class="text-base text-zinc-400">
+            Created with ❤️ by <a href="https://gfrancv.com">GFrancV</a>
+          </p>
+        </div>
 
         <div class="flex items-center gap-4">
           <a
