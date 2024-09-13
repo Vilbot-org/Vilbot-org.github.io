@@ -1,0 +1,133 @@
+---
+import Typography, { colorClasses } from "../components/Typography.astro";
+import Layout from "../layouts/Layout.astro";
+import VilbotLogo from "../icons/VilbotLogo.astro";
+import Vilbot from "../icons/Vilbot.astro";
+
+interface Color {
+  name: string;
+  hex: string;
+  bg: string;
+  text: keyof typeof colorClasses;
+}
+
+const colors: Color[] = [
+  {
+    name: "Fuchsia",
+    hex: "#e879f9",
+    bg: "bg-fuchsia-400",
+    text: "black",
+  },
+  {
+    name: "Zinc",
+    hex: "#f9f9f9",
+    bg: "bg-zinc-400",
+    text: "black",
+  },
+  {
+    name: "Gray",
+    hex: "#d1d5db",
+    bg: "bg-gray-300",
+    text: "black",
+  },
+  {
+    name: "Black",
+    hex: "#000000",
+    bg: "bg-black",
+    text: "white",
+  },
+  {
+    name: "Dark Blue",
+    hex: "#0e1323",
+    bg: "bg-[#0e1323]",
+    text: "white",
+  },
+];
+---
+
+<Layout title="Branding - Vilbot">
+  <section class="container mx-auto pt-12">
+    <Typography as="h1" color="fuchsia" variant="big" class="mb-2">
+      Vilbot Branding
+    </Typography>
+    <Typography as="p" color="white" variant="body"
+      >Here you can find all the branding assets for Vilbot.</Typography
+    >
+  </section>
+  <section class="container mx-auto py-8">
+    <Typography as="big" color="fuchsia" variant="h2" class="mb-2">
+      Logos
+    </Typography>
+    <div
+      class="p-4 text-center border border-white/5 rounded-lg bg-white/5 mb-6 relative"
+    >
+      <VilbotLogo class="mx-auto" />
+      <div class="absolute bottom-0 right-0 space-x-2">
+        <a href="/svg/vilbot-logo.svg" download>
+          <Typography
+            as="span"
+            color="fuchsia"
+            variant="body"
+            class="font-bold"
+          >
+            .svg
+          </Typography>
+        </a>
+        <a href="/img/icons/vilbot-logo.png" download>
+          <Typography
+            as="span"
+            color="fuchsia"
+            variant="body"
+            class="font-bold"
+          >
+            .png
+          </Typography>
+        </a>
+      </div>
+    </div>
+    <div
+      class="p-4 text-center border border-white/5 rounded-lg bg-white/5 relative"
+    >
+      <Vilbot class="mx-auto" />
+      <div class="absolute bottom-0 right-0 space-x-2">
+        <a href="/svg/vilbot.svg" download>
+          <Typography
+            as="span"
+            color="fuchsia"
+            variant="body"
+            class="font-bold"
+          >
+            .svg
+          </Typography>
+        </a>
+        <a href="/img/icons/vilbot.png" download>
+          <Typography
+            as="span"
+            color="fuchsia"
+            variant="body"
+            class="font-bold"
+          >
+            .png
+          </Typography>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="container mx-auto py-8">
+    <Typography as="big" color="fuchsia" variant="h2"> Colors </Typography>
+    <div class="grid lg:grid-cols-3 grid-cols-2 gap-6 text-gray-300">
+      {
+        colors.map((color) => (
+          <div class:list={[color.bg, " p-4 rounded-lg border border-white/5"]}>
+            <Typography as="p" color={color.text} variant="h3">
+              {color.name}
+            </Typography>
+            <Typography as="p" color={color.text} variant="body" class="mt-12">
+              Hex: {color.hex}
+            </Typography>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
