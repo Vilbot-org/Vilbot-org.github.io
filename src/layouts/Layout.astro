@@ -7,7 +7,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const year = new Date().getFullYear();
 
 const discordUrl = import.meta.env.PUBLIC_DISCORD_URL;
 const githubRepo = import.meta.env.PUBLIC_GITHUB_REPO;
@@ -19,28 +18,36 @@ const githubRepo = import.meta.env.PUBLIC_GITHUB_REPO;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen flex flex-col bg-[#0e1323]">
+  <body
+    class="flex flex-col min-h-screen bg-gradient-to-b from-[#0e1323] to-[#1a2440]"
+  >
     <main class="flex-grow p-4">
       <slot />
     </main>
-    <footer class="px-4 py-8 text-center border-t border-[#858b9833]">
+    <footer class="px-4 py-8 text-center bg-[#0a0f1b]">
       <nav
         class="container mx-auto flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
       >
         <p class="text-base text-white">
-          ©<a href="https://gfrancv.com">GFrancV</a> - {year}
+          Created with ❤️ by <a href="https://gfrancv.com">GFrancV</a>
         </p>
 
         <div class="flex items-center gap-4">
-          <a href={discordUrl} class="duration-300 hover:-translate-y-1">
+          <a
+            href={discordUrl}
+            class="transition-all duration-300 hover:translate-y-[-5px] inline-block"
+          >
             <span class="sr-only">Discord</span>
             <Discord class="w-6 h-6 text-white" />
           </a>
-          <a href={githubRepo} class="duration-300 hover:-translate-y-1">
+          <a
+            href={githubRepo}
+            class="transition-all duration-300 hover:translate-y-[-5px] inline-block"
+          >
             <span class="sr-only">GitHub</span>
             <Github class="w-6 h-6 text-white" />
           </a>
@@ -49,3 +56,41 @@ const githubRepo = import.meta.env.PUBLIC_GITHUB_REPO;
     </footer>
   </body>
 </html>
+
+<style>
+  a {
+    background-image: linear-gradient(transparent, transparent),
+      linear-gradient(white 20%, white 80%);
+    background-size: 0 1px;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease-in-out;
+  }
+
+  @media (prefers-reduced-motion) {
+    a {
+      transition: none;
+    }
+  }
+  a:hover,
+  a.active {
+    background-size: 100% 1px;
+    background-position: 0 100%;
+  }
+  @media (prefers-reduced-motion) {
+    a {
+      background-image: linear-gradient(transparent, transparent),
+        linear-gradient(white 20%, white 80%);
+      background-size: 0 3px;
+      background-position: 100% 100%;
+      background-repeat: no-repeat;
+      transition: background-size 0s;
+    }
+    a:hover {
+      background-size: 100% 3px;
+      background-position: 0 100%;
+    }
+  }
+
+
+</style>

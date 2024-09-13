@@ -6,18 +6,18 @@ const inviteBotUrl = import.meta.env.PUBLIC_INVITE_BOT_URL;
 
 <Layout title="Vilbot - The awesome Discord Music Bot for your server!">
   <section class="container mx-auto px-4 py-48 text-center m-auto">
-    <h2 class="text-6xl md:text-7xl lg:text-9xl font-bold mb-2 text-[#fe83e8]">
+    <h1 class="text-6xl md:text-7xl lg:text-9xl font-bold mb-4 text-[#fe83e8]">
       Vilbot
-    </h2>
-    <div class="space-y-4 mb-12">
-      <p class="text-white text-xl font-bold inline-block px-4 py-2">
+    </h1>
+    <div class="space-y-4 mb-8">
+      <p class="text-gray-300 text-xl inline-block px-4 py-2">
         The awesome Discord Music Bot for your server!
       </p>
     </div>
     <div>
       <a
         href={inviteBotUrl}
-        class="flex items-center justify-center gap-2 text-lg px-4 py-2 text-white transition bg-blue-600 hover:bg-blue-700 disabled:bg-blue-500 w-fit mx-auto"
+        class="animate-glow flex items-center justify-center gap-2 text-lg w-fit mx-auto bg-[#fe83e8] hover:bg-[#ff9ef0] text-[#0e1323] font-bold py-3 px-6 rounded-full transition duration-300"
         target="_blank"
       >
         Invite Vilbot
@@ -25,3 +25,24 @@ const inviteBotUrl = import.meta.env.PUBLIC_INVITE_BOT_URL;
     </div>
   </section>
 </Layout>
+
+<style>
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 5px #fe83e8,
+        0 0 10px #fe83e8,
+        0 0 15px #fe83e8;
+    }
+    50% {
+      box-shadow:
+        0 0 10px #fe83e8,
+        0 0 20px #fe83e8,
+        0 0 30px #fe83e8;
+    }
+  }
+  .animate-glow {
+    animation: glow 2s infinite;
+  }
+</style>
