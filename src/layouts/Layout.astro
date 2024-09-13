@@ -1,12 +1,15 @@
 ---
+import SEO from "../components/SEO.astro";
 import Discord from "../icons/Discord.astro";
 import Github from "../icons/Github.astro";
 
 interface Props {
   title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+const image = "img/op.png";
 
 const discordUrl = import.meta.env.PUBLIC_DISCORD_URL;
 const githubRepo = import.meta.env.PUBLIC_REPO;
@@ -15,14 +18,8 @@ const githubRepo = import.meta.env.PUBLIC_REPO;
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body class="flex flex-col min-h-screen bg-gradient-to-b bg-[#0e1323]">
+    <SEO title={title} description={description} image={image} />
+  </head><body class="flex flex-col min-h-screen bg-gradient-to-b bg-[#0e1323]">
     <main class="flex-grow">
       <slot />
     </main>
