@@ -16,6 +16,11 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+      - name: Create env file
+        run: |
+          echo "PUBLIC_INVITE_BOT_URL=${{ vars.INVITE_BOT_URL }}" > .env &&
+          echo "PUBLIC_DISCORD_URL=${{ vars.DISCORD_URL }}" >> .env
+          echo "PUBLIC_GITHUB_REPO=${{ vars.GITHUB_REPO }}" >> .env
       - name: Install, build, and upload your site
         uses: withastro/action@v3
 
