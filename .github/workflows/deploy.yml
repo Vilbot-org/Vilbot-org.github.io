@@ -20,7 +20,7 @@ jobs:
         run: |
           echo "PUBLIC_INVITE_BOT_URL=${{ vars.INVITE_BOT_URL }}" > .env &&
           echo "PUBLIC_DISCORD_URL=${{ vars.DISCORD_URL }}" >> .env
-          echo "PUBLIC_GITHUB_REPO=${{ vars.GITHUB_REPO }}" >> .env
+          echo "PUBLIC_GITHUB_REPO=${{ vars.REPO }}" >> .env
       - name: Install, build, and upload your site
         uses: withastro/action@v3
 
