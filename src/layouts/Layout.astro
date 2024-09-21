@@ -19,11 +19,14 @@ const githubRepo = import.meta.env.PUBLIC_REPO;
 <html lang="en">
   <head>
     <SEO title={title} description={description} image={image} />
-  </head><body class="flex flex-col min-h-screen bg-gradient-to-b bg-[#0e1323]">
-    <main class="flex-grow">
+  </head>
+  <body
+    class="max-w-4xl mx-auto flex flex-col min-h-screen bg-gradient-to-b bg-[#0e1323]"
+  >
+    <main class="flex-grow pb-12">
       <slot />
     </main>
-    <footer class="container mx-auto">
+    <footer>
       <nav
         class="border-t border-white/5 px-4 py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
       >

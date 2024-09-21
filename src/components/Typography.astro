@@ -18,15 +18,14 @@ export const colorClasses = {
 };
 
 const variantClasses = {
-  big: "text-5xl font-bold",
-  h2: "text-4xl font-semibold",
-  h3: "text-3xl font-semibold",
-  body: "text-lg",
+  big: "text-5xl font-bold mb-6",
+  h2: "text-4xl font-semibold mb-4",
+  h3: "text-3xl font-semibold mb-4",
+  body: "text-base mb-2",
   sm: "text-sm",
 };
 
 const classes = [
-  "mb-2",
   colorClasses[color as keyof typeof colorClasses],
   variantClasses[variant as keyof typeof variantClasses],
   className,
