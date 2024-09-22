@@ -23,12 +23,12 @@ const githubRepo = import.meta.env.PUBLIC_REPO;
   <body
     class="max-w-4xl mx-auto flex flex-col min-h-screen bg-gradient-to-b bg-[#0e1323]"
   >
-    <main class="flex-grow pb-12">
+    <main class="flex-grow py-12 px-4">
       <slot />
     </main>
     <footer>
       <nav
-        class="border-t border-white/5 px-4 py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
+        class="border-t border-white/5 px-4 py-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
       >
         <div>
           <ul class="flex gap-2 mb-2">
@@ -50,7 +50,7 @@ const githubRepo = import.meta.env.PUBLIC_REPO;
               </a>
             </li>
           </ul>
-          <p class="text-base text-zinc-400">
+          <p class="text-base text-zinc-400 md:text-start text-center">
             Created with ❤️ by <a href="https://gfrancv.com">GFrancV</a>
           </p>
         </div>
