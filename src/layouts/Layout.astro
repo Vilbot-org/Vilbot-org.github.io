@@ -13,6 +13,8 @@ const image = "img/op.png";
 
 const discordUrl = import.meta.env.PUBLIC_DISCORD_URL;
 const githubRepo = import.meta.env.PUBLIC_REPO;
+
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -23,6 +25,17 @@ const githubRepo = import.meta.env.PUBLIC_REPO;
   <body
     class="max-w-4xl mx-auto flex flex-col min-h-screen bg-gradient-to-b bg-[#0e1323]"
   >
+    {
+      currentPath !== "/" && (
+        <header class="py-4">
+          <nav>
+            <a href="/">
+              <img src="/img/icons/vilbot.png" alt="" class="w-auto h-12" />
+            </a>
+          </nav>
+        </header>
+      )
+    }
     <main class="flex-grow py-12 px-4">
       <slot />
     </main>
