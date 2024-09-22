@@ -1,9 +1,34 @@
 ---
 import Button from "../components/Button.astro";
 import Layout from "../layouts/Layout.astro";
+import MusicalNoteIcon from "../icons/MusicalNote.astro";
+import PlaylistIcon from "../icons/Playlist.astro";
+import PlayerPlayIcon from "../icons/PlayerPlay.astro";
+import Typography from "../components/Typography.astro";
 
 const inviteBotUrl = import.meta.env.PUBLIC_INVITE_BOT_URL;
 const discordUrl = import.meta.env.PUBLIC_DISCORD_URL;
+
+const features = [
+  {
+    icon: MusicalNoteIcon,
+    title: "Music",
+    description:
+      "Vilbot is a Discord music bot that plays music from YouTube, and Spotify. It supports YouTube playlists, Spotify playlists with a simple command.",
+  },
+  {
+    icon: PlaylistIcon,
+    title: "Playlist",
+    description:
+      "You can create your own playlist with Vilbot. You can add, remove, and play your playlist with a simple command.",
+  },
+  {
+    icon: PlayerPlayIcon,
+    title: "Web Player",
+    description:
+      "You can listen to music with Vilbot's web player. You can control the music, queue, and more with the web player.",
+  },
+];
 ---
 
 <script>
@@ -83,5 +108,37 @@ const discordUrl = import.meta.env.PUBLIC_DISCORD_URL;
         </Button>
       </div>
     </section>
+  </section>
+  <section class="grid grid-cols-2 gap-8" aria-label="Main Features">
+    <div>test 1</div>
+    <div>
+      <ol class="relative border-s border-gray-700">
+        {
+          features.map((feature) => (
+            <li class="mb-10 ms-6">
+              <span class="absolute flex items-center justify-center w-8 h-8  rounded-full -start-4  bg-fuchsia-400/10">
+                <feature.icon class="w-4 h-4 text-fuchsia-400" />
+              </span>
+              <Typography
+                as="h3"
+                color="white"
+                variant="h3"
+                class="flex items-center"
+              >
+                {feature.title}
+              </Typography>
+              <Typography
+                as="p"
+                color="zinc"
+                variant="body"
+                class="flex items-center"
+              >
+                {feature.description}
+              </Typography>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
   </section>
 </Layout>
