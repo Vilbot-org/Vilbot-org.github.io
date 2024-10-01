@@ -1,7 +1,6 @@
 ---
-layout: "../layouts/Layout.astro"
-title: "Terms of Service - Vilbot"
-description: "Terms of Service to use Vilbot"
+title: Terms of Service - Vilbot
+description: Terms of Service to use Vilbot
 ---
 
 # Terms of Service

@@ -1,7 +1,6 @@
 ---
-layout: "../layouts/Layout.astro"
-title: "Privacy Policy - Vilbot"
-description: "Privacy Policies for Vilbot"
+title: Privacy Policy - Vilbot
+description: Privacy Policies for Vilbot
 ---
 
 # Privacy Policy
