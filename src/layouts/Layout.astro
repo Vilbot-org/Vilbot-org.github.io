@@ -7,15 +7,18 @@ import Github from "../icons/Github.astro";
 interface Props {
   title: string;
   description: string;
+  prose?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, prose } = Astro.props;
 const image = "img/op.png";
 
 const discordUrl = import.meta.env.PUBLIC_DISCORD_URL;
 const githubRepo = import.meta.env.PUBLIC_REPO;
 
 const currentPath = Astro.url.pathname;
+
+const mainClass = prose ? "prose prose-invert" : "";
 ---
 
 <!doctype html>
@@ -44,13 +47,11 @@ const currentPath = Astro.url.pathname;
     </style>
   </head>
 
-  <body
-    class="max-w-4xl mx-auto flex flex-col min-h-screen bg-gradient-to-b bg-[#0e1323]"
-  >
+  <body class="flex flex-col min-h-screen bg-[#0e1323]">
     {
       currentPath !== "/" && (
-        <header class="py-4">
-          <nav>
+        <header>
+          <nav class="py-4 max-w-4xl mx-auto text-center">
             <a href="/">
               <span
                 transition:name="site-logo"
@@ -63,12 +64,15 @@ const currentPath = Astro.url.pathname;
         </header>
       )
     }
-    <main class="flex-grow py-12 px-4 prose prose-invert mx-auto">
+    <main
+      class="flex-grow py-12 px-4 w-full max-w-4xl mx-auto"
+      class:list={mainClass}
+    >
       <slot />
     </main>
     <footer>
       <nav
-        class="border-t border-white/5 px-4 py-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
+        class="border-t border-white/5 px-4 py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 mx-auto max-w-4xl"
       >
         <div>
           <ul class="flex gap-2 mb-2">
