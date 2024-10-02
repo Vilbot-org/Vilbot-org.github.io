@@ -15,18 +15,10 @@ Our website is solely designed to display information about Vilbot. We do not tr
 
 ## Discord Bot Privacy
 
-Vilbot does not collect any additional information beyond what is
-provided by the official Discord API. The data used by Vilbot is limited
-to the information of users within a Discord guild that has added the
-bot. This information is solely used for the internal functioning of the
-bot and is not shared with any third parties.
+Vilbot does not collect any additional information beyond what is provided by the official Discord API. The data used by Vilbot is limited to the information of users within a Discord guild that has added the bot. This information is solely used for the internal functioning of the bot and is not shared with any third parties.
 
 ## Data Usage
 
-Vilbot only accesses and uses the data provided by Discord (such as user
-IDs, usernames, and server information) to ensure the bot functions
-properly within Discord guilds where it is present. No personal data is
-stored or used for purposes outside of the bot's operation.
+Vilbot only accesses and uses the data provided by Discord (such as user IDs, usernames, and server information) to ensure the bot functions properly within Discord guilds where it is present. No personal data is stored or used for purposes outside of the bot's operation.
 
-If you have any questions or concerns regarding your privacy while using
-Vilbot, please feel free to contact us at GFrancV Github.
+If you have any questions or concerns regarding your privacy while using Vilbot, please feel free to contact us at [GFrancV Github](https://github.com/GFrancV).
