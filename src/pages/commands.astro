@@ -1,0 +1,17 @@
+---
+import Typography from "../components/Typography.astro";
+import CommandsList from "../components/CommandsList.vue";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Commands - Vilbot"
+  description="A bot for Discord that allows you to play music in your Discord server."
+>
+  <section>
+    <Typography as="h1" variant="title" color="white"> Commands </Typography>
+  </section>
+  <section class="my-8">
+    <CommandsList client:load />
+  </section>
+</Layout>
