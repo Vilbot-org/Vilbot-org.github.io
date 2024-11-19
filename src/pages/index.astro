@@ -109,36 +109,37 @@ const features = [
       </div>
     </section>
   </section>
-  <section class="grid grid-cols-2 gap-8" aria-label="Main Features">
-    <div>test 1</div>
-    <div>
-      <ol class="relative border-s border-gray-700">
-        {
-          features.map((feature) => (
-            <li class="mb-10 ms-6">
-              <span class="absolute flex items-center justify-center w-8 h-8  rounded-full -start-4  bg-fuchsia-400/10">
-                <feature.icon class="w-4 h-4 text-fuchsia-400" />
+
+  <section class="py-16">
+    <Typography as="h2" color="white" variant="h3" class="mb-8">
+      Main Features
+    </Typography>
+    <div class="grid grid-cols-3 gap-8" aria-label="Main Features">
+      {
+        features.map((feature) => (
+          <div class="border border-white/15 rounded py-4 px-6 transition hover:border-fuchsia-400">
+            <Typography
+              as="h3"
+              color="white"
+              variant="h4"
+              class="flex items-center gap-2 mb-2"
+            >
+              <span class="flex items-center justify-center size-10 rounded-full bg-fuchsia-400/10">
+                <feature.icon class="size-6 text-fuchsia-400" />
               </span>
-              <Typography
-                as="h3"
-                color="white"
-                variant="h3"
-                class="flex items-center"
-              >
-                {feature.title}
-              </Typography>
-              <Typography
-                as="p"
-                color="zinc"
-                variant="body"
-                class="flex items-center"
-              >
-                {feature.description}
-              </Typography>
-            </li>
-          ))
-        }
-      </ol>
+              {feature.title}
+            </Typography>
+            <Typography
+              as="p"
+              color="zinc"
+              variant="body"
+              class="flex items-center"
+            >
+              {feature.description}
+            </Typography>
+          </div>
+        ))
+      }
     </div>
   </section>
 </Layout>
